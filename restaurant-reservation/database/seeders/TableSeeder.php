@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Table;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,8 +13,8 @@ class TableSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Table::create(['name' => 'Table 1', 'capacity' => 4]);
-        \App\Models\Table::create(['name' => 'Table 2', 'capacity' => 2]);
-        \App\Models\Table::create(['name' => 'Table 3', 'capacity' => 6]);
+        Table::create(['name' => 'Table 1', 'capacity' => 4, 'status' => true]);
+        Table::create(['name' => 'Table 2', 'capacity' => 2, 'status' => true]);
+        Table::create(['name' => 'Table 3', 'capacity' => 6, 'status' => true]);
     }
 }
