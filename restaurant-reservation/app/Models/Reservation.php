@@ -20,4 +20,8 @@ class Reservation extends Model
     {
         return $this->belongsTo(Table::class);
     }
+
+    const STATUS_PENDING = 'pending';
+    const STATUS_CONFIRMED = 'confirmed';
+    const STATUS_CANCELLED = 'cancelled';
 }
