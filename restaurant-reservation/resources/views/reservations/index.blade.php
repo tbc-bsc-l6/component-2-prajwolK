@@ -7,7 +7,7 @@
         @if($reservations->isEmpty())
             <p>You have no reservations yet.</p>
         @else
-            <table class="table">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Table</th>

@@ -1,12 +1,25 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
-    <h1>Welcome, {{ auth()->user()->name }}</h1>
-    <p>Your role: {{ auth()->user()->role }}</p>
-
-    @if(auth()->user()->isAdmin())
-        <p>You have administrative privileges!</p>
-    @else
-        <p>You are a regular user.</p>
-    @endif
+<div class="container">
+    <h1>Admin Dashboard</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Total Reservations</h4>
+                    <p>{{ $reservationsCount }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Total Tables</h4>
+                    <p>{{ $tablesCount }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

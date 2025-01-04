@@ -41,4 +41,8 @@ Route::prefix('admin')->middleware('role:admin')->group(function () {
     ]);
 });
 
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function() {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+});
+
 require __DIR__.'/auth.php';
