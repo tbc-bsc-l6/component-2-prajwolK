@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('admin')->group(function (){
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function (){
     Route::resource('/tables', TableController::class);
     Route::resource('/reservations', ReservationController::class);
 });
