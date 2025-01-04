@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -49,5 +50,21 @@ class User extends Authenticatable
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
+    }
+
+    const ROLE_ADMIN = 'admin';
+    const ROLE_USER = 'user';
+
+
+    //Check if user is admin
+    public function isAdmin()
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    //Check if user is regular user
+    public function isUser()
+    {
+        return $this->role === self::ROLE_USER;
     }
 }

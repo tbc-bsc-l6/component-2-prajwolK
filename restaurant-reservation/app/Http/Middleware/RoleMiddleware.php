@@ -16,9 +16,10 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        if(Auth::check() && Auth::user()->role == $role){
-            return $next($request);
+        if(auth()->check() && auth()->user()->role !==$role){
+            return redirect('/');
         }
-        return redirect('/');
+
+        return $next($request);
     }
 }
