@@ -10,6 +10,7 @@ Route::get('/home',[HomeController::class,'index']);
 Route::get('/addfood',[AdminController::class,'addfood']);
 Route::get('/viewfood',[AdminController::class,'viewfood']);
 Route::post('/uploadfood',[AdminController::class,'uploadfood']);
+Route::get('/deletefood/{id}',[AdminController::class,'deletefood']);
 
 Route::middleware([
     'auth:sanctum',

@@ -31,4 +31,11 @@ class AdminController extends Controller
         $data=Food::all();
         return view('admin.showfood',compact('data'));
     }
+
+    public function deletefood($id)
+    {
+        $data=Food::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
 }
