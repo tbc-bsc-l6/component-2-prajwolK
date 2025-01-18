@@ -25,4 +25,10 @@ class AdminController extends Controller
         $data->save();
         return redirect()->back();
     }
+
+    public function viewfood()
+    {
+        $data=Food::all();
+        return view('admin.showfood',compact('data'));
+    }
 }
