@@ -17,7 +17,7 @@
             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
-                                <input class="btn btn-primary" type="submit" value="logout">
+                                <input class="btn btn-danger" type="submit" value="logout">
                             </form>
             </div>
           </div>
