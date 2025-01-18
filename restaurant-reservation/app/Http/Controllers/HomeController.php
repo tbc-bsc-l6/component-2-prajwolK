@@ -15,11 +15,16 @@ class HomeController extends Controller
             $user_type = Auth()->user()->user_type;
             if($user_type=='user')
             {
-                return view('dashboard');
+                return view('home.index');
             }
             else{
                 return view('admin.index');
             }
         }
+    }
+
+    public function myhome()
+    {
+        return view('home.index');
     }
 }
