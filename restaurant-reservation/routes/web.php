@@ -21,6 +21,7 @@ Route::get('/ontheway/{id}',[AdminController::class,'ontheway']);
 Route::get('/delivered/{id}',[AdminController::class,'delivered']);
 Route::get('/cancel/{id}',[AdminController::class,'cancel']);
 Route::post('/booktable',[HomeController::class,'booktable']);
+Route::get('/reservation',[AdminController::class,'reservation']);
 Route::get('/removecart/{id}',[HomeController::class,'removecart']);
 
 Route::middleware([
