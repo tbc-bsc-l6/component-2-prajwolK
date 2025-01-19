@@ -32,10 +32,33 @@ class AdminController extends Controller
         return view('admin.showfood',compact('data'));
     }
 
+    public function editfood($id){
+        $food = Food::find($id);
+        return view('admin.editfood',compact('food'));
+    }
+
+    public function foodedit(Request $request,$id)
+    {
+        $data=Food::find($id);
+        $data->name=$request->name;
+        $data->detail=$request->details;
+        $data->price=$request->price;
+        $image=$request->image;
+        if($image)
+        {
+            $imagename=time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('food_image',$imagename);
+            $data->image=$imagename;
+        }
+        $data->save();
+        return redirect('viewfood');
+    }
+
     public function deletefood($id)
     {
         $data=Food::find($id);
         $data->delete();
-        return redirect()->back();
+        return redirect('viewfood');
     }
+    
 }
