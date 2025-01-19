@@ -7,7 +7,7 @@
         </div>
         <span class="heading">Main</span>
         <ul class="list-unstyled">
-                <li class="active"><a href="index.html"> Home </a></li>
+                <li class="active"><a href="{{url('home')}}"> Home </a></li>
                 <li><a href="#foodDropdown" aria-expanded="false" data-toggle="collapse"> Food </a>
                   <ul id="foodDropdown" class="collapse list-unstyled ">
                     <li><a href="{{url('addfood')}}">Add Food</a></li>
