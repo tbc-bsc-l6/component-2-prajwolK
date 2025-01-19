@@ -1,3 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @include('home.css')
+    <style>
+        table{
+            margin: auto;
+            border: 1px solid  #DB6572;
+            padding: 40px
+        }
+        th{
+            padding:10px;
+            text-align: center;
+            background-color: #DB6572;
+            color:white;
+            font-weight:bold;
+        }
+        td{
+            padding:10px;
+            color:white;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    
 <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,11 +71,42 @@
             </ul>
         </div>
     </nav>
-    <!-- header -->
-    <header id="home" class="header">
-        <div class="overlay text-white text-center">
-            <h1 class="display-2 font-weight-bold my-3">Food Hut</h1>
-            <h2 class="display-4 mb-5">Always fresh &amp; Delightful</h2>
-            <a class="btn btn-lg btn-primary" href="#gallary">View Our gallary</a>
-        </div>
-    </header>
+        <br><br><br><br>
+    <div id="gallary" class="text-center bg-dark text-light has-height-md middle-items wow fadeIn">
+    <table>
+    <thead>
+        <tr>
+            <th>Food</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Image</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $totalprice = 0;
+        ?>
+        @foreach($data as $item)
+        <tr>
+            <td>{{ $item->name }}</td>
+            <td>Rs. {{ $item->price }}</td>
+            <td>{{ $item->quantity }}</td>
+            <td>
+                <img width="150" src="food_image/{{ $item->image }}" alt="{{ $item->name }}">
+            </td>
+            <td>
+                <a onclick="return confirm('Remove item form cart?')" class="btn btn-danger" href="{{url('removecart',$item->id)}}">Remove</a>
+            </td>
+        </tr>
+        <?php
+        $totalprice = $totalprice + $item->price;
+        ?>
+        @endforeach
+    </tbody>
+</table>
+<br><br>
+    <h2>Total Price: Rs. {{ $totalprice }}</h2>
+    </div>
+</body>
+</html>

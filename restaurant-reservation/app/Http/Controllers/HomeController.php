@@ -55,4 +55,18 @@ class HomeController extends Controller
             return redirect()->route('login')->with('message', 'Please login to add to cart');
         }
     }
+
+    public function mycart()
+    {
+        $userid = Auth()->user()->id;
+        $data=Cart::where('userid','=',$userid)->get();
+        return view('home.mycart',compact('data'));
+    }
+
+    public function removecart($id)
+    {
+        $data = Cart::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
 }
