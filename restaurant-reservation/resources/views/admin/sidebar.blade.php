@@ -7,14 +7,14 @@
         </div>
         <span class="heading">Main</span>
         <ul class="list-unstyled">
-                <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-                <li><a href="#foodDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Food </a>
+                <li class="active"><a href="index.html"> Home </a></li>
+                <li><a href="#foodDropdown" aria-expanded="false" data-toggle="collapse"> Food </a>
                   <ul id="foodDropdown" class="collapse list-unstyled ">
                     <li><a href="{{url('addfood')}}">Add Food</a></li>
                     <li><a href="{{url('viewfood')}}">View Food</a></li>
                   </ul>
                 </li>
-                <li><a href="login.html"> <i class="icon-logout"></i>Login page </a></li>
+                <li><a href="{{url('orders')}}">Orders </a></li>
         </ul><span class="heading">Extras</span>
         <ul class="list-unstyled">
           <li> <a href="#"> <i class="icon-settings"></i>Demo </a></li>
