@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Food;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -15,7 +16,8 @@ class HomeController extends Controller
             $user_type = Auth()->user()->user_type;
             if($user_type=='user')
             {
-                return view('home.index');
+                $data=Food::all();
+                return view('home.index',compact('data'));
             }
             else{
                 return view('admin.index');
@@ -25,6 +27,7 @@ class HomeController extends Controller
 
     public function myhome()
     {
-        return view('home.index');
+        $data=Food::all();
+        return view('home.index',compact('data'));
     }
 }

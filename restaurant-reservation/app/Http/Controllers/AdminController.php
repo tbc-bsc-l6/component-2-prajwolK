@@ -23,7 +23,7 @@ class AdminController extends Controller
         $request->image->move('food_image',$imagename);
         $data->image=$imagename;
         $data->save();
-        return redirect()->back();
+        return redirect('viewfood');
     }
 
     public function viewfood()
