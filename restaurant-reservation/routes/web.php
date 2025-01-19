@@ -15,6 +15,7 @@ Route::get('/editfood/{id}',[AdminController::class,'editfood']);
 Route::post('/foodedit/{id}',[AdminController::class,'foodedit']);
 Route::post('/addtocart/{id}',[HomeController::class,'addtocart']);
 Route::get('/mycart',[HomeController::class,'mycart']);
+Route::post('/confirmorder',[HomeController::class,'confirmorder']);
 Route::get('/removecart/{id}',[HomeController::class,'removecart']);
 
 Route::middleware([

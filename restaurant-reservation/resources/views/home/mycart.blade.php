@@ -19,6 +19,22 @@
             padding:10px;
             color:white;
         }
+
+        .div_center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top:50px;
+        }
+
+        label{
+            display:inline-block;
+            width:200px;
+
+        }
+        .div_deg{
+            padding: 20px;
+        }
     </style>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
@@ -30,28 +46,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#gallary">Gallary</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#book-table">Book-Table</a>
+                    <a class="nav-link" href="{{url('/home')}}">Home</a>
                 </li>
             </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#blog">Blog<span class="sr-only">(current)</span></a>
-                </li>
-
                 @if (Route::has('login'))
-                @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('mycart')}}">Cart</a>
-                </li>
+
                 <form action="{{route('logout')}}" method="POST">
                     @csrf
                 <input class="btn btn-primary ml-xl-4" type="submit" value="Logout">
@@ -64,7 +63,6 @@
                     <a class="nav-link" href="{{ route('register') }}">Register</a>
                 </li>
                 @endauth
-                @endif
                 <!-- <li class="nav-item">
                     <a href="components.html" class="">Components</a>
                 </li> -->
@@ -107,6 +105,31 @@
 </table>
 <br><br>
     <h2>Total Price: Rs. {{ $totalprice }}</h2>
+    </div>
+
+    <div class="div_center">
+        <form action="{{url('confirmorder')}}" method="post">
+            @csrf
+            <div class="div_deg">
+                <label for="">Name</label>
+                <input type="text" name="name" value="{{Auth()->user()->name}}">
+            </div>
+            <div class="div_deg">
+                <label for="">Email</label>
+                <input type="email" name="email" value="{{Auth()->user()->email}}">
+            </div>
+            <div class="div_deg">
+                <label for="">Phone</label>
+                <input type="number" name="phone" value="{{Auth()->user()->phone}}">
+            </div>
+            <div class="div_deg">
+                <label for="">Address</label>
+                <input type="text" name="address" value="{{Auth()->user()->address}}">
+            </div>
+            <div class="div_deg">
+                <input class="btn btn-info" type="submit" value="Confirm Order">
+            </div>
+        </form>
     </div>
 </body>
 </html>
