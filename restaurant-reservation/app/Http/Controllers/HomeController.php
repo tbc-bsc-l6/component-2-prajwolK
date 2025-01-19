@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Food;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -29,5 +31,28 @@ class HomeController extends Controller
     {
         $data=Food::all();
         return view('home.index',compact('data'));
+    }
+
+    public function addtocart(Request $request, $id)
+    {
+        if(Auth::id())
+        {
+            $food = Food::find($id);
+
+            $data = new Cart;
+            $data->name = $food->name;
+            $data->details = $food->detail;
+            $data->price = Str::remove('Rs.',$food->price) * $request->qty;
+            $data->image = $food->image;
+            $data->quantity = $request->qty;
+            $data->userid = Auth()->user()->id;
+            $data->save();
+            return redirect()->back()->with('message', 'Item added to cart successfully');
+
+        }
+        else
+        {
+            return redirect()->route('login')->with('message', 'Please login to add to cart');
+        }
     }
 }

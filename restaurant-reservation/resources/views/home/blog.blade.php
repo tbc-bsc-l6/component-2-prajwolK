@@ -12,6 +12,15 @@
                                 <h4 class="pt20 pb20">{{$data->name}}</h4>
                                 <p class="text-white">{{$data->detail}}</p>
                             </div>
+
+                            <form action="{{url('addtocart',$data->id)}}" method="post">
+                                @csrf
+                            <input value="1" type="number" min="1" name="qty" required>
+                            <input class="btn btn-info" type="submit" value="Add to Cart">
+                            </form>
+                            <br>
+                            <br>
+                            <br>
                         </div>
                     </div>
                     @endforeach
