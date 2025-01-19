@@ -17,6 +17,9 @@ Route::post('/addtocart/{id}',[HomeController::class,'addtocart']);
 Route::get('/mycart',[HomeController::class,'mycart']);
 Route::post('/confirmorder',[HomeController::class,'confirmorder']);
 Route::get('/orders',[AdminController::class,'orders']);
+Route::get('/ontheway/{id}',[AdminController::class,'ontheway']);
+Route::get('/delivered/{id}',[AdminController::class,'delivered']);
+Route::get('/cancel/{id}',[AdminController::class,'cancel']);
 Route::get('/removecart/{id}',[HomeController::class,'removecart']);
 
 Route::middleware([

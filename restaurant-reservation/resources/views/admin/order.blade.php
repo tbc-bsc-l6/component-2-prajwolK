@@ -42,6 +42,7 @@
                     <th>Price</th>
                     <th>Image</th>
                     <th>Status</th>
+                    <th>Change Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,6 +59,11 @@
                         <img width="100" src="food_image/{{ $item->image }}" alt="{{ $item->title }}">
                     </td>
                     <td>{{ $item->delivery_status }}</td>
+                    <td>
+                        <a onclick="return confirm('Confirm action?')" class="btn btn-info" href="{{url('ontheway',$item->id)}}">On the way</a>
+                        <a onclick="return confirm('Confirm action?')" class="btn btn-warning" href="{{url('delivered',$item->id)}}">Delivered</a>
+                        <a onclick="return confirm('Confirm action?')" class="btn btn-danger" href="{{url('cancel',$item->id)}}">Cancel</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
