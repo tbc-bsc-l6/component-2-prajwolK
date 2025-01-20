@@ -31,7 +31,6 @@ class AdminController extends Controller
     public function viewfood(Request $request)
     {
         $query = Food::query();
-
         //Search
         if($request->has('search') && $request->search != ''){
             $query->where('name', 'LIKE', '%' . $request->search . '%')

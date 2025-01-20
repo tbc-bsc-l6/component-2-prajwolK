@@ -14,17 +14,20 @@ Route::post('/booktable',[HomeController::class,'booktable']);
 Route::get('/removecart/{id}',[HomeController::class,'removecart']);
 
 //AdminControllers
-Route::get('/addfood',[AdminController::class,'addfood']);
-Route::get('/viewfood',[AdminController::class,'viewfood']);
-Route::post('/uploadfood',[AdminController::class,'uploadfood']);
-Route::delete('/deletefood/{id}',[AdminController::class,'deletefood'])->name('deletefood');
-Route::get('/editfood/{id}',[AdminController::class,'editfood']);
-Route::put('/foodedit/{id}',[AdminController::class,'foodedit'])->name('foodedit');
-Route::get('/orders',[AdminController::class,'orders']);
-Route::get('/ontheway/{id}',[AdminController::class,'ontheway']);
-Route::get('/delivered/{id}',[AdminController::class,'delivered']);
-Route::get('/cancel/{id}',[AdminController::class,'cancel']);
-Route::get('/reservation',[AdminController::class,'reservation']);
+Route::middleware(['auth'])->group(function(){
+    Route::get('/addfood',[AdminController::class,'addfood']);
+    Route::get('/viewfood',[AdminController::class,'viewfood']);
+    Route::post('/uploadfood',[AdminController::class,'uploadfood']);
+    Route::delete('/deletefood/{id}',[AdminController::class,'deletefood'])->name('deletefood');
+    Route::get('/editfood/{id}',[AdminController::class,'editfood']);
+    Route::put('/foodedit/{id}',[AdminController::class,'foodedit'])->name('foodedit');
+    Route::get('/orders',[AdminController::class,'orders']);
+    Route::get('/ontheway/{id}',[AdminController::class,'ontheway']);
+    Route::get('/delivered/{id}',[AdminController::class,'delivered']);
+    Route::get('/cancel/{id}',[AdminController::class,'cancel']);
+    Route::get('/reservation',[AdminController::class,'reservation']);
+});
+
 
 Route::middleware([
     'auth:sanctum',
