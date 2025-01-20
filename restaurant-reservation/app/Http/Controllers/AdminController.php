@@ -79,10 +79,25 @@ class AdminController extends Controller
         return redirect('viewfood');
     }
 
-    public function orders()
+    public function orders(Request $request)
     {
-        $data=Order::all();
-        return view('admin.order',compact('data'));
+        $search = $request->input('search');
+        $sortBy = $request->input('sort', 'name');
+        $order = $request->input('order', 'asc');
+
+        $query = Order::query();
+
+        if ($search) {
+            $query->where('name', 'LIKE', "%{$search}%")
+                  ->orWhere('email', 'LIKE', "%{$search}%")
+                  ->orWhere('phone', 'LIKE', "%{$search}%")
+                  ->orWhere('address', 'LIKE', "%{$search}%")
+                  ->orWhere('title', 'LIKE', "%{$search}%");
+        }
+    
+        $data = $query->orderBy($sortBy, $order)->get();
+
+        return view('admin.order',compact('data','search','sortBy','order'));
     }
 
     public function ontheway($id)
