@@ -45,7 +45,7 @@ class AdminController extends Controller
             $query->orderBy($sortField, $sortOrder);
         }
 
-        $data =  $query->get();
+        $data =  $query->paginate(5);
 
         return view('admin.showfood',compact('data'));
     }

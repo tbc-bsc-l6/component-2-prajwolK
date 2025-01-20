@@ -83,6 +83,9 @@
             </tr>
             @endforeach
           </table>
+          <div style="margin-top: 20px; text-align: center">
+            {{$data->links('pagination::bootstrap-4')}}
+          </div>
         </div>
       </div>
     </div>

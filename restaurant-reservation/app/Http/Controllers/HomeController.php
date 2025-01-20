@@ -13,14 +13,19 @@ use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         if(Auth::id())
         {
             $user_type = Auth()->user()->user_type;
             if($user_type=='user')
             {
-                $data=Food::all();
+                $data=Food::paginate(6);
+                
+                if($request->ajax()){
+                    return view('home.foods_data', compact('data'));
+                }
+
                 return view('home.index',compact('data'));
             }
             else{
@@ -35,7 +40,7 @@ class HomeController extends Controller
 
     public function myhome()
     {
-        $data=Food::all();
+        $data=Food::paginate(6);
         return view('home.index',compact('data'));
     }
 
