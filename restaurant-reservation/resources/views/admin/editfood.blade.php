@@ -25,6 +25,7 @@
             <h1>Update Food</h1>
             <form action="{{url('foodedit',$food->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="div_deg">
                     <label for="">Name</label>
                     <input type="text" name="name" value="{{$food->name}}">

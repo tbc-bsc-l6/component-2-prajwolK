@@ -74,9 +74,13 @@ class AdminController extends Controller
 
     public function deletefood($id)
     {
-        $data=Food::find($id);
-        $data->delete();
-        return redirect('viewfood');
+        $food = Food::find($id);
+        if($food){
+            $food->delete();
+            return redirect('viewfood')->with('message', 'Food deleted successfully');
+        }else{
+            return redirect('viewfood')->with('message', 'Food not found');
+        }
     }
 
     public function orders(Request $request)
