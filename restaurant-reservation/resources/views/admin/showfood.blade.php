@@ -28,37 +28,57 @@
       <div class="page-content">
         <div class="page-header">
         <div class="container-fluid">
-            <h1>All Foods</h1>
-            <div>
-                <table>
-                    <tr>
-                        <th>Food</th>
-                        <th>Details</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    @foreach($data as $data)
-                    <tr>
-                        <td>{{$data->name}}</td>
-                        <td>{{$data->detail}}</td>
-                        <td>{{$data->price}}</td>
-                        <td>
-                            <img width="150" height="150px" src="food_image/{{$data->image}}" alt="">
-                        </td>
-                        <td>
-                            <a class="btn btn-secondary" href="{{url('editfood',$data->id)}}">Edit</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-danger" onclick="return confirm('Do you want to delete?')" href="{{url('deletefood',$data->id)}}">Delete</a>
-                        </td>
-                        
-                    </tr>
-                    @endforeach
-                </table>
-            </div>
-        </div>
+    <h1>All Foods</h1>
+    <!-- Search and Sort -->
+    <div style="margin-bottom: 20px;">
+        <form action="{{ url('viewfood') }}" method="GET" style="display: flex; gap: 10px;">
+            <!-- Search Bar -->
+            <input type="text" name="search" placeholder="Search Food..." value="{{ request('search') }}" style="padding: 5px;">
+
+            <!-- Sorting -->
+            <select name="sort" style="padding: 5px;">
+                <option value="" disabled selected>Sort By</option>
+                <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name</option>
+                <option value="price" {{ request('sort') == 'price' ? 'selected' : '' }}>Price</option>
+            </select>
+
+            <select name="order" style="padding: 5px;">
+                <option value="asc" {{ request('order') == 'asc' ? 'selected' : '' }}>Ascending</option>
+                <option value="desc" {{ request('order') == 'desc' ? 'selected' : '' }}>Descending</option>
+            </select>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Apply</button>
+        </form>
+    </div>
+
+    <table>
+        <tr>
+            <th>Food</th>
+            <th>Details</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        @foreach($data as $item)
+        <tr>
+            <td>{{ $item->name }}</td>
+            <td>{{ $item->detail }}</td>
+            <td>{{ $item->price }}</td>
+            <td>
+                <img width="150" height="150px" src="food_image/{{ $item->image }}" alt="">
+            </td>
+            <td>
+                <a class="btn btn-secondary" href="{{ url('editfood', $item->id) }}">Edit</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" onclick="return confirm('Do you want to delete?')" href="{{ url('deletefood', $item->id) }}">Delete</a>
+            </td>
+        </tr>
+        @endforeach
+    </table>
+</div>
       </div>
     </div>
     <!-- JavaScript files-->

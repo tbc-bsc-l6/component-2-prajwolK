@@ -28,9 +28,25 @@ class AdminController extends Controller
         return redirect('viewfood');
     }
 
-    public function viewfood()
+    public function viewfood(Request $request)
     {
-        $data=Food::all();
+        $query = Food::query();
+
+        //Search
+        if($request->has('search') && $request->search != ''){
+            $query->where('name', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('detail', 'LIKE', '%' . $request->search . '%');
+        }
+
+        //Sorting
+        if ($request->has('sort') && $request->sort != '') {
+            $sortField = $request->sort;
+            $sortOrder = $request->order ?? 'asc';
+            $query->orderBy($sortField, $sortOrder);
+        }
+
+        $data =  $query->get();
+
         return view('admin.showfood',compact('data'));
     }
 
