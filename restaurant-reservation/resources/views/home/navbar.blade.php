@@ -11,15 +11,12 @@
                     <a class="nav-link" href="#about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#gallary">Gallary</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#book-table">Book-Table</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#blog">Blog<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#blog">Food<span class="sr-only">(current)</span></a>
                 </li>
 
                 @if (Route::has('login'))
@@ -49,8 +46,7 @@
     <!-- header -->
     <header id="home" class="header">
         <div class="overlay text-white text-center">
-            <h1 class="display-2 font-weight-bold my-3">Food Hut</h1>
-            <h2 class="display-4 mb-5">Always fresh &amp; Delightful</h2>
-            <a class="btn btn-lg btn-primary" href="#gallary">View Our gallary</a>
+            <h1 class="display-2 font-weight-bold my-3">Thistle Triangle</h1>
+            <h2 class="display-4 mb-5">Taste the flavors of Eurasian Cusine</h2>
         </div>
     </header>
