@@ -37,9 +37,6 @@
                 </li>
                 @endauth
                 @endif
-                <!-- <li class="nav-item">
-                    <a href="components.html" class="">Components</a>
-                </li> -->
             </ul>
         </div>
     </nav>
@@ -47,6 +44,6 @@
     <header id="home" class="header">
         <div class="overlay text-white text-center">
             <h1 class="display-2 font-weight-bold my-3">Thistle Triangle</h1>
-            <h2 class="display-4 mb-5">Taste the flavors of Eurasian Cusine</h2>
+            <h2 class="display-4 mb-5">Taste the flavors of Eurasian Cuisine</h2>
         </div>
     </header>
